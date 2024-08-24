@@ -44,6 +44,10 @@ class CustomImageAdminView(ModelView):
             filepath = form.image_url.save(filename, folder)
             model.image_url = filepath
         return super(CustomImageAdminView, self).on_model_change(form, model, is_created)
+    
+class AdminView(ModelView):
+    def is_accessible(self):
+        return current_user.is_authenticated
 
 
 
@@ -51,10 +55,10 @@ class CustomImageAdminView(ModelView):
 # Initialize Flask-Admin and add views
 def setup_admin(app):
     admin = Admin(app, name='NOOB ADMIN', template_mode='bootstrap3')
-    admin.add_view(CustomImageAdminView(User, db.session))
+    admin.add_view(AdminView(User, db.session))
     admin.add_view(CustomImageAdminView(Profile, db.session))
-    admin.add_view(CustomImageAdminView(Pricing, db.session))
+    admin.add_view(AdminView(Pricing, db.session))
     admin.add_view(CustomImageAdminView(FeaturedProject, db.session))
-    admin.add_view(CustomImageAdminView(EducationalExperience, db.session))
-    admin.add_view(CustomImageAdminView(Specialization, db.session))
+    admin.add_view(AdminView(EducationalExperience, db.session))
+    admin.add_view(AdminView(Specialization, db.session))
     admin.add_view(CustomImageAdminView(Advantage, db.session))
