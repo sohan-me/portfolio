@@ -1,0 +1,498 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="page-loader">
+    <div class="bounceball"></div>
+</div>
+
+<span class="icon-menu">
+    <span class="bar"></span>
+    <span class="bar"></span>
+</span>
+
+<div class="global-color">
+    <span class="setting-toggle">
+        <i class="las la-cog"></i>
+    </span>
+    <div class="inner">
+        <div class="overlay"></div>
+        <div class="global-color-option">
+            <span class="close-settings">
+                <i class="las la-times"></i>
+            </span>
+            <h2>Configuration</h2>
+            <div class="global-color-option-inner">
+                <p>Colors</p>
+                <div class="color-boxed">
+                    <a href="#" class="clr-active" onclick="color1();"></a>
+                    <a href="#" onclick="color2();"></a>
+                    <a href="#" onclick="color3();"></a>
+                    <a href="#" onclick="color4();"></a>
+                    <a href="#" onclick="color5();"></a>
+                    <a href="#" onclick="color6();"></a>
+                    <a href="#" onclick="color7();"></a>
+                    <a href="#" onclick="color8();"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="responsive-sidebar-menu">
+    <div class="overlay"></div>
+    <div class="sidebar-menu-inner">
+        <div class="menu-wrap">
+            <p>Menu</p>
+            <ul class="menu scroll-nav-responsive d-flex">
+                <li>
+                    <a class="scroll-to" href="#home">
+                        <i class="las la-home"></i> <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="scroll-to" href="#about">
+                        <i class="lar la-user"></i> <span>About</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="scroll-to" href="#resume">
+                        <i class="las la-briefcase"></i> <span>Resume</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="scroll-to" href="#services">
+                        <i class="las la-stream"></i> <span>Services</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="scroll-to" href="#skills">
+                        <i class="las la-shapes"></i> <span>Skills</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="scroll-to" href="#portfolio">
+                        <i class="las la-grip-vertical"></i> <span>Portfolios</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="scroll-to" href="#contact">
+                        <i class="las la-envelope"></i> <span>Contact</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="sidebar-social">
+            <p>Social</p>
+            <ul class="social-links d-flex align-items-center">
+                <li>
+                    <a href="{{profile.twitter}}" target="_blank"><i class="lab la-twitter"></i></a>
+                </li>
+                <li>
+                    <a href="{{profile.linkedin}}" target="_blank"><i class="lab la-linkedin"></i></a>
+                </li>
+                <li>
+                    <a href="{{profile.instagram}}" target="_blank"><i class="lab la-instagram"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<ul class="menu scroll-nav d-flex">
+    <li>
+        <a class="scroll-to" href="#home">
+            <span>Home</span> <i class="las la-home"></i>
+        </a>
+    </li>
+    <li>
+        <a class="scroll-to" href="#about">
+            <span>About</span> <i class="lar la-user"></i>
+        </a>
+    </li>
+    <li>
+        <a class="scroll-to" href="#resume">
+            <span>Resume</span> <i class="las la-briefcase"></i>
+        </a>
+    </li>
+    <li>
+        <a class="scroll-to" href="#services">
+            <span>Services</span> <i class="las la-stream"></i>
+        </a>
+    </li>
+    <li>
+        <a class="scroll-to" href="#skills">
+            <span>Skills</span> <i class="las la-shapes"></i>
+        </a>
+    </li>
+    <li>
+        <a class="scroll-to" href="#portfolio">
+            <span>Portfolios</span> <i class="las la-grip-vertical"></i>
+        </a>
+    </li>
+    <li>
+        <a class="scroll-to" href="#contact">
+            <span>Contact</span> <i class="las la-envelope"></i>
+        </a>
+    </li>
+</ul>
+
+<div class="left-sidebar">
+    <div class="sidebar-header d-flex align-items-center justify-content-between">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
+        <span class="designation">Django &amp; Flask Developer</span>
+    </div>
+    <img class="me" src="{{ url_for('static', filename=profile.image_url) }}" alt="Me">
+    <h2 class="email">sohun.me@gmail.com</h2>
+    <h2 class="address">Base in Dhaka, BD</h2>
+    <p class="copyright">© 2024 NooB. All Rights Reserved</p>
+    <ul class="social-profile d-flex align-items-center flex-wrap justify-content-center">
+        <li>
+            <a href="{{profile.twitter}}" target="_blank"><i class="lab la-twitter"></i></a>
+        </li>
+        <li>
+            <a href="{{profile.linkedin}}" target="_blank"><i class="lab la-linkedin"></i></a>
+        </li>
+        <li>
+            <a href="{{profile.instagram}}" target="_blank"><i class="lab la-instagram"></i></a>
+        </li>
+        <li>
+            <a href="{{profile.github}}" target="_blank"><i class="lab la-github"></i></a>
+        </li>
+    </ul>
+    <a href="#contact" class="theme-btn">
+        <i class="las la-envelope"></i> Hire Me!
+    </a>
+</div>
+
+<main class="drake-main">
+    <div id="smooth-wrapper">
+        <div id="smooth-content">
+
+            <div class="left-sidebar">
+                <div class="sidebar-header d-flex align-items-center justify-content-between">
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
+                    <span class="designation">Django, Flask &amp; Developer</span>
+                </div>
+                <img class="me" src="{{ url_for('static', filename='images/me.jpg') }}" alt="Me">
+                <h2 class="email">sohun.me@gmail.com</h2>
+                <h2 class="address">Base in Dhaka, BD</h2>
+                <p class="copyright">© 2024 NooB. All Rights Reserved</p>
+                <ul class="social-profile d-flex align-items-center flex-wrap justify-content-center">
+                    <li>
+                        <a href="{{profile.twitter}}" target="_blank"><i class="lab la-twitter"></i></a>
+                    </li>
+                    <li>
+                        <a href="{{profile.linkedin}}" target="_blank"><i class="lab la-linkedin"></i></a>
+                    </li>
+                    <li>
+                        <a href="{{profile.instagram}}" target="_blank"><i class="lab la-instagram"></i></a>
+                    </li>
+                    <li>
+                        <a href="{{profile.github}}" target="_blank"><i class="lab la-github"></i></a>
+                    </li>
+                </ul>
+                <a href="#" class="theme-btn">
+                    <i class="las la-envelope"></i> Hire Me!
+                </a>
+            </div>
+
+            <section class="hero-section page-section scroll-to-page" id="home">
+
+                <div class="custom-container">
+                    <div class="hero-content content-width">
+                        <div class="section-header">
+                            <h4 class="subtitle scroll-animation" data-animation="fade_from_bottom">
+                                <i class="las la-home"></i> Introduce
+                            </h4>
+                            <h1 class="scroll-animation" data-animation="fade_from_bottom">Say Hi from <span>Sohan</span>, Django and Flask Developer</h1>
+                        </div>
+                        <p class="scroll-animation" data-animation="fade_from_bottom">I code efficiently simple things and i love what i do. Just simple like that!</p>
+                        <a href="#portfolio" class="go-to-project-btn scroll-to scroll-animation" data-animation="rotate_up">
+                            <img src="{{ url_for('static', filename='images/round-text.png') }}" alt="Rounded Text">
+                            <i class="las la-arrow-down"></i>
+                        </a>
+    
+                        <div class="facts d-flex">
+                            <div class="left scroll-animation" data-animation="fade_from_left">
+                                <h1>{{profile.experience}}+</h1>
+                                <p>Years of <br>Experience</p>
+                            </div>
+                            <div class="right scroll-animation" data-animation="fade_from_right">
+                                <h1>{{profile.project_count}}+</h1>
+                                <p>projects completed<br>worldwide</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    
+            <section class="about-area page-section scroll-to-page" id="about">
+                <div class="custom-container">
+                    <div class="about-content content-width">
+                        <div class="section-header">
+                            <h4 class="subtitle scroll-animation" data-animation="fade_from_bottom">
+                                <i class="lar la-user"></i> About
+                            </h4>
+                            <h1 class="scroll-animation" data-animation="fade_from_bottom">Every great design begin with<br>
+                                an even <span>better story</span></h1>
+                        </div>
+                        <p class="scroll-animation" data-animation="fade_from_bottom">Since beginning my journey as a freelance designer nearly {{profile.experience}} years ago, 
+                            I've done remote work for agencies, consulted for startups, and collaborated with 
+                            talented people to create digital products for both business and consumer use. 
+                            I'm quietly confident, naturally curious, and perpetually working on improving my 
+                            chopsone design problem at a time.</p>
+                    </div>
+                </div>
+            </section>
+    
+    
+            <section class="resume-area page-section scroll-to-page" id="resume">
+                <div class="custom-container">
+                    <div class="resume-content content-width">
+                        <div class="section-header">
+                            <h4 class="subtitle scroll-animation" data-animation="fade_from_bottom">
+                                <i class="las la-briefcase"></i> Resume
+                            </h4>
+                            <h1 class="scroll-animation" data-animation="fade_from_bottom">Education &amp; <span>Experience</span></h1>
+                        </div>
+    
+                        <div class="resume-timeline">
+                    
+                            {% for item in educational_experiences %}
+                            <div class="item scroll-animation" data-animation="fade_from_right">
+                                <span class="date">{{item.start_date.strftime('%Y')}} - {% if item.end_date %} {{ item.end_date.strftime('%Y') }} {% else %} Present {% endif %}</span>
+                                <h2>{{item.degree}}</h2>
+                                <p>{{item.institution}}</p>
+                            </div>
+                            {% endfor %}
+                            
+                        </div>
+    
+                    </div>
+                </div>
+            </section>
+    
+    
+            <section class="services-area page-section scroll-to-page" id="services">
+                <div class="custom-container">
+                    <div class="services-content content-width">
+                        <div class="section-header">
+                            <h4 class="subtitle scroll-animation" data-animation="fade_from_bottom">
+                                <i class="las la-stream"></i> Services
+                            </h4>
+                            <h1 class="scroll-animation" data-animation="fade_from_bottom">My <span>Specializations</span></h1>
+                        </div>
+    
+                        <div class="services-items">
+                           
+                                {% for item in specializations %}
+                                <div class="service-item scroll-animation" data-animation="fade_from_bottom">
+                                    <i class="las la-code"></i>
+                                    <h2>{{item.skill_name}}</h2>
+                                    <p>{{item.description}}</p>
+                                    <span class="projects">8 Projects</span>
+                                </div>
+                                {% endfor %}
+                        </div>
+    
+                    </div>
+                </div>
+            </section>
+    
+    
+            <section class="skills-area page-section scroll-to-page" id="skills">
+                <div class="custom-container">
+                    <div class="skills-content content-width">
+                        <div class="section-header">
+                            <h4 class="subtitle scroll-animation" data-animation="fade_from_bottom">
+                                <i class="las la-shapes"></i> my skills
+                            </h4>
+                            <h1 class="scroll-animation" data-animation="fade_from_bottom">My <span>Advantages</span></h1>
+                        </div>
+    
+                        <div class="row skills text-center">
+                           
+                            {% for item in advantages%}
+                            <div class="col-md-3 scroll-animation" data-animation="fade_from_bottom">
+                                <div class="skill">
+                                    <div class="skill-inner">
+                                        <img src="{{ url_for('static', filename=item.image_url) }}" alt="Laravel/PHP">
+                                        <h1 class="percent">{{item.proficiency}}%</h1>
+                                    </div>
+                                    <p class="name">{{item.skill_name}}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+    
+                    </div>
+                </div>
+            </section>
+    
+    
+            <section class="portfolio-area page-section scroll-to-page" id="portfolio">
+                <div class="custom-container">
+                    <div class="portfolio-content content-width">
+                        <div class="section-header">
+                            <h4 class="subtitle scroll-animation" data-animation="fade_from_bottom">
+                                <i class="las la-grip-vertical"></i> portfolio
+                            </h4>
+                            <h1 class="scroll-animation" data-animation="fade_from_bottom">Featured <span>Projects</span></h1>
+                        </div>
+    
+                        <div class="row portfolio-items">
+                            {% for item in featured_projects %}
+                            <div class="col-md-6 scroll-animation" data-animation="fade_from_left">
+                                <div class="portfolio-item portfolio-half">
+                                    <div class="portfolio-item-inner">
+                                        <a href="{{ url_for('static', filename=item.image_url) }}" data-lightbox="example-1">
+                                            <img src="{{ url_for('static', filename=item.image_url) }}" alt="Portfolio">
+                                        </a>
+
+                                        <img src="{{ url_for('static', filename=item.image_url ) }}" alt="Portfolio">
+    
+                                        <ul class="portfolio-categories">
+                                          {% for tag in item.tags.split(',') %}
+                                            <li>
+                                                <a href="">{{tag}}</a>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                    <h2><a href="{{item.project_link}}" target="_blank">{{item.project_name}}</a></h2>
+                                    <p>{{item.description}}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                           
+    
+                            
+                        </div>
+    
+                    </div>
+                </div>
+            </section>
+    
+    
+     
+    
+            <section class="pricing-area page-section scroll-to-page" id="pricing">
+                <div class="custom-container">
+                    <div class="pricing-content content-width">
+                        <div class="section-header">
+                            <h4 class="subtitle scroll-animation" data-animation="fade_from_bottom">
+                                <i class="las la-dollar-sign"></i> pricing
+                            </h4>
+                            <h1 class="scroll-animation" data-animation="fade_from_bottom">My <span>Pricing</span></h1>
+                        </div>
+    
+                        <div class="pricing-table-items">
+                            <div class="row">
+                            {% for price in pricings %}
+
+                                <div class="col-md-6 scroll-animation" data-animation="fade_from_{{ loop.cycle('left', 'right') }}">
+                                    <div class="pricing-table">
+                                        <div class="pricing-table-header">
+                                            <div class="top d-flex justify-content-between align-items-start">
+                                                <h4>{{price.plan_name}}</h4>
+                                                <p class="text-right">Got you design ready?<br>
+                                                    or {{price.description}}</p>
+                                            </div>
+                                            <h1>Upto <span>/ ${{price.price}}</span></h1>
+                                        </div>
+                                        <ul class="feature-lists">
+                                            {% for feature in price.features.split(';') %}
+                                                <li>{{ feature }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                        <a href="#contact" class="theme-btn">pick this package</a>
+                                    </div>
+                                </div>
+                               {% endfor %}
+                            </div>
+                            <p class="info scroll-animation" data-animation="fade_from_bottom">
+                                Don't find any package match with your plan!<br>
+                                Want to setup a new tailor-made package for only you?. <a href="">Contact Us</a>
+                            </p>
+                        </div>
+    
+                    </div>
+                </div>
+            </section>
+
+            <section class="contact-area page-section scroll-content" id="contact">
+                <div class="custom-container">
+                    <div class="contact-content content-width">
+                        <div class="section-header">
+                            <h4 class="subtitle scroll-animation" data-animation="fade_from_bottom">
+                                <i class="las la-dollar-sign"></i> contact
+                            </h4>
+                            <h1 class="scroll-animation" data-animation="fade_from_bottom">Let's Work <span>Together!</span></h1>
+                        </div>
+                        <h3 class="scroll-animation" data-animation="fade_from_bottom">sohun.me@gmail.com</h3>
+                        <p id="required-msg">* Marked fields are required to fill.</p>
+            
+                        <!-- Update form action to point to Flask route -->
+                        <form class="contact-form scroll-animation" data-animation="fade_from_bottom" method="POST" action="/" enctype="multipart/form-data">
+                            <div class="alert alert-success messenger-box-contact__msg" style="display: none" role="alert">
+                                Your message was sent successfully.
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <label for="full-name">Full Name <sup>*</sup></label>
+                                        <input type="text" name="full-name" id="full-name" placeholder="Your Full Name" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <label for="email">Email <sup>*</sup></label>
+                                        <input type="email" name="email" id="email" placeholder="Your Email Address" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <label for="phone-number">Phone <span>(optional)</span></label>
+                                        <input type="text" name="phone-number" id="phone-number" placeholder="Your Phone Number">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <label for="subject">Subject <sup>*</sup></label>
+                                        <input type="text" name="subject" id="subject" placeholder="Message subject">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <label for="budget">Your Budget <span>(optional)</span></label>
+                                        <input type="number" name="budget" id="budget" placeholder="Your budget range for the project">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <label for="message">Message</label>
+                                        <textarea name="message" id="message" placeholder="Write your message here..." required></textarea>
+                                    </div>
+                                </div>
+                        
+                                <div class="col-md-12">
+                                    <div class="input-group submit-btn-wrap">
+                                        <button class="theme-btn" name="submit" type="submit" id="submit-form">Send Message</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            
+       
+        </div>
+    </div>
+</main>
+
+
+{% endblock %}
