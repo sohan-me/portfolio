@@ -13,6 +13,7 @@ flask-login = "*"
 flask-mail = "*"
 gunicorn = "*"
 python-dotenv = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 

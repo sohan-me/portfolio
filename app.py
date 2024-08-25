@@ -10,7 +10,7 @@ import os
 app = Flask(__name__, static_folder='static')
 
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///./portfolio.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('SQLALCHEMY_DATABASE_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key='57bb67aa6730e86a4cf106df20059b5e803fe7b22425fdd2f83baf551c61f209'
 
