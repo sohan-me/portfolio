@@ -24,7 +24,7 @@ class Profile(db.Model):
     __tablename__ = 'profile'
     
     id = db.Column(db.Integer, primary_key=True)
-    image_url = db.Column(db.String(200))
+    image_url = db.Column(db.Text)
     email = db.Column(db.String(50))
     project_count = db.Column(db.String, nullable=True)
     experience = db.Column(db.String, nullable=True)
@@ -50,7 +50,7 @@ class FeaturedProject(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     project_name = db.Column(db.String(100), nullable=False)
     description = db.Column(db.Text, nullable=False)
-    image_url = db.Column(db.String(200), nullable=False)
+    image_url = db.Column(db.Text, nullable=False)
     project_link = db.Column(db.String(200))
     tags = db.Column(db.String(200), nullable=True)
 
@@ -78,4 +78,4 @@ class Advantage(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     skill_name = db.Column(db.String(100), nullable=False)
     proficiency = db.Column(db.Integer)
-    image_url = db.Column(db.String(200), nullable=True)
+    image_url = db.Column(db.Text, nullable=True)

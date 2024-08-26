@@ -1,33 +1,63 @@
-from flask_admin.form import BaseForm
 from flask_admin import Admin
 from flask_wtf.file import FileField
 from flask_admin.contrib.sqla import ModelView
 from werkzeug.utils import secure_filename
-import os
 from flask_login import current_user
 from models import db, Profile, Specialization, EducationalExperience, Pricing, FeaturedProject, Advantage, User
+import boto3, os
+from botocore.exceptions import NoCredentialsError
 
 
 
-UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), 'static/uploads')
-os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+BUCKET_NAME = 'portfolio_bucket'
 
+
+s3_client = boto3.client(
+    's3',
+    region_name=os.getenv('REGION'),
+    endpoint_url=os.getenv('ENDPOINT'),
+    aws_access_key_id=os.getenv('ACCESS_KEY_ID'),
+    aws_secret_access_key=os.getenv('ACCESS_KEY'),
+    config=boto3.session.Config(signature_version='s3v4')
+)
+
+def generate_presigned_url(file_key):
+    try:
+        presigned_url = s3_client.generate_presigned_url(
+            'get_object',
+            Params={'Bucket': BUCKET_NAME, 'Key': file_key},
+        )
+        return presigned_url
+    except Exception as e:
+        print(f"Error generating presigned URL: {e}")
+        return None
 
 class CustomFileUploadField(FileField):
     def __init__(self, label='', **kwargs):
         super().__init__(label, **kwargs)
-
+    
     def process_formdata(self, valuelist):
         if valuelist:
             self.data = valuelist[0]
 
-    def save(self, filename, folder):
+    def save(self, filename):
         if self.data:
-            filepath = os.path.join(folder, secure_filename(self.data.filename))
-            self.data.save(filepath)
-            return os.path.join('uploads', filename)
+            file_key = secure_filename(filename)
+            try:
+                s3_client.upload_fileobj(self.data, BUCKET_NAME, file_key)
+                file_url = generate_presigned_url(file_key)
+                return file_url
+            
+                print('URL returned successfully' + file_url)
+            except NoCredentialsError:
+                print("Credentials not available.")
+            except Exception as e:
+                print(f"Error uploading file: {e}")
         return None
-
+    
+    
+    
+    
 class CustomImageAdminView(ModelView):
     
     def is_accessible(self):
@@ -39,20 +69,16 @@ class CustomImageAdminView(ModelView):
 
     def on_model_change(self, form, model, is_created):
         if form.image_url.data:
-            filename = secure_filename(form.image_url.data.filename)
-            folder = UPLOAD_FOLDER
-            filepath = form.image_url.save(filename, folder)
-            model.image_url = filepath
+            filename = form.image_url.data.filename
+            file_url = form.image_url.save(filename)
+            model.image_url = file_url
         return super(CustomImageAdminView, self).on_model_change(form, model, is_created)
+
     
 class AdminView(ModelView):
     def is_accessible(self):
         return current_user.is_authenticated
 
-
-
-
-# Initialize Flask-Admin and add views
 def setup_admin(app):
     admin = Admin(app, name='NOOB ADMIN', template_mode='bootstrap3')
     admin.add_view(AdminView(User, db.session))
