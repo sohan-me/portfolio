@@ -21,11 +21,12 @@ s3_client = boto3.client(
     config=boto3.session.Config(signature_version='s3v4')
 )
 
-def generate_presigned_url(file_key):
+def generate_presigned_url(file_key,  expiration=315360000):
     try:
         presigned_url = s3_client.generate_presigned_url(
             'get_object',
             Params={'Bucket': BUCKET_NAME, 'Key': file_key},
+            ExpiresIn=expiration
         )
         return presigned_url
     except Exception as e:
