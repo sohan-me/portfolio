@@ -4,34 +4,8 @@ from flask_admin.contrib.sqla import ModelView
 from werkzeug.utils import secure_filename
 from flask_login import current_user
 from models import db, Profile, Specialization, EducationalExperience, Pricing, FeaturedProject, Advantage, User
-import boto3, os
-from botocore.exceptions import NoCredentialsError
-
-
-
-BUCKET_NAME = 'portfolio_bucket'
-
-
-s3_client = boto3.client(
-    's3',
-    region_name=os.getenv('REGION'),
-    endpoint_url=os.getenv('ENDPOINT'),
-    aws_access_key_id=os.getenv('ACCESS_KEY_ID'),
-    aws_secret_access_key=os.getenv('ACCESS_KEY'),
-    config=boto3.session.Config(signature_version='s3v4')
-)
-
-def generate_presigned_url(file_key,  expiration=315360000):
-    try:
-        presigned_url = s3_client.generate_presigned_url(
-            'get_object',
-            Params={'Bucket': BUCKET_NAME, 'Key': file_key},
-            ExpiresIn=expiration
-        )
-        return presigned_url
-    except Exception as e:
-        print(f"Error generating presigned URL: {e}")
-        return None
+import os
+from flask import current_app
 
 class CustomFileUploadField(FileField):
     def __init__(self, label='', **kwargs):
@@ -43,22 +17,26 @@ class CustomFileUploadField(FileField):
 
     def save(self, filename):
         if self.data:
-            file_key = secure_filename(filename)
-            try:
-                s3_client.upload_fileobj(self.data, BUCKET_NAME, file_key)
-                file_url = generate_presigned_url(file_key)
-                return file_url
+            # Secure the filename and create unique name
+            filename = secure_filename(filename)
+            # Add timestamp to make filename unique
+            import time
+            timestamp = str(int(time.time()))
+            name, ext = os.path.splitext(filename)
+            unique_filename = f"{name}_{timestamp}{ext}"
             
-                print('URL returned successfully' + file_url)
-            except NoCredentialsError:
-                print("Credentials not available.")
-            except Exception as e:
-                print(f"Error uploading file: {e}")
+            # Ensure upload directory exists
+            upload_folder = current_app.config['UPLOAD_FOLDER']
+            os.makedirs(upload_folder, exist_ok=True)
+            
+            # Save file to local storage
+            file_path = os.path.join(upload_folder, unique_filename)
+            self.data.save(file_path)
+            
+            # Return the relative URL for the file
+            return f"/static/uploads/{unique_filename}"
         return None
-    
-    
-    
-    
+
 class CustomImageAdminView(ModelView):
     
     def is_accessible(self):
@@ -75,7 +53,6 @@ class CustomImageAdminView(ModelView):
             model.image_url = file_url
         return super(CustomImageAdminView, self).on_model_change(form, model, is_created)
 
-    
 class AdminView(ModelView):
     def is_accessible(self):
         return current_user.is_authenticated

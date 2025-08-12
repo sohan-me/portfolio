@@ -9,22 +9,22 @@ from mail_utils import mail
 
 app = Flask(__name__, static_folder='static')
 
+# Media configuration for file uploads
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max file size
+
+# Neon PostgreSQL database configuration
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('SQLALCHEMY_DATABASE_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key='57bb67aa6730e86a4cf106df20059b5e803fe7b22425fdd2f83baf551c61f209'
 
-app.config['SUPABASE_URL'] = os.getenv('URL')
-app.config['SUPABASE_KEY'] = os.getenv('KEY')
-
-
+# Mail configuration
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
 app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
 app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_DEFAULT_SENDER')
-
 
 mail.init_app(app)
 
@@ -38,11 +38,9 @@ setup_admin(app)
 
 app.register_blueprint(views)
 
-
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
-
 
 if __name__ == '__main__':
     app.run(debug=True)
