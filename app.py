@@ -14,7 +14,7 @@ app.config['UPLOAD_FOLDER'] = 'static/uploads'
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max file size
 
 # Neon PostgreSQL database configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('SQLALCHEMY_DATABASE_URI')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://neondb_owner:npg_bmIQOtU1fav6@ep-square-hat-afwq7z8y-pooler.c-2.us-west-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key='57bb67aa6730e86a4cf106df20059b5e803fe7b22425fdd2f83baf551c61f209'
 

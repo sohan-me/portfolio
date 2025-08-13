@@ -187,6 +187,7 @@ ul {
 }
 
 
+
 #scroll-section {
     /* overflow-x: hidden !important;
     overflow-y: auto !important; */
@@ -421,6 +422,18 @@ main.drake-main {
     color: #fff;
     font-size: 20px;
 }
+
+/* Adjust for mobile view */
+@media (max-width: 768px) {
+    .global-color .setting-toggle {
+        margin-top: 50px; /* pushes it down */
+        margin-left: 5px;
+        /* or if it's absolutely positioned: */
+        /* top: 50px; */
+    }
+}
+
+
 .global-color .inner .global-color-option .global-color-option-inner p {
     text-transform: uppercase;
     font-size: 13px;
@@ -684,7 +697,7 @@ main.drake-main {
     margin-bottom: 65px;
 }
 .left-sidebar .sidebar-header .designation {
-    max-width: 110px;
+    max-width: 130px;
     text-align: right;
     color: #fff;
     font-size: 14px;
@@ -716,7 +729,7 @@ main.drake-main {
     text-align: center;
     border: 2px solid #565656;
     border-radius: 50%;
-    color: #999999;
+    color: #28e98c;
     font-size: 20px;
     transition: .3s;
 }

@@ -10,7 +10,7 @@
     <span class="bar"></span>
 </span>
 
-<div class="global-color">
+<!-- <div class="global-color">
     <span class="setting-toggle">
         <i class="las la-cog"></i>
     </span>
@@ -36,7 +36,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <div class="responsive-sidebar-menu">
     <div class="overlay"></div>
@@ -141,12 +141,12 @@
 <div class="left-sidebar">
     <div class="sidebar-header d-flex align-items-center justify-content-between">
         <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
-        <span class="designation">Django &amp; Flask Developer</span>
+        <span class="designation">Software Engineer - Backend</span>
     </div>
         <img class="me" src="{{ profile.image_url }}" alt="Me">
     <h2 class="email">sohun.me@gmail.com</h2>
     <h2 class="address">Base in Dhaka, BD</h2>
-    <p class="copyright">© 2024 NooB. All Rights Reserved</p>
+    <p class="copyright">© 2025 NooB. All Rights Reserved</p>
     <ul class="social-profile d-flex align-items-center flex-wrap justify-content-center">
         <li>
             <a href="{{profile.twitter}}" target="_blank"><i class="lab la-twitter"></i></a>
@@ -173,12 +173,12 @@
             <div class="left-sidebar">
                 <div class="sidebar-header d-flex align-items-center justify-content-between">
                     <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
-                    <span class="designation">Django, Flask &amp; Developer</span>
+                    <span class="designation">Software Engineer - Backend</span>
                 </div>
                 <img class="me" src="{{ profile.image_url }}" alt="Me">
                 <h2 class="email">sohun.me@gmail.com</h2>
                 <h2 class="address">Base in Dhaka, BD</h2>
-                <p class="copyright">© 2024 NooB. All Rights Reserved</p>
+                <p class="copyright">© 2025 NooB. All Rights Reserved</p>
                 <ul class="social-profile d-flex align-items-center flex-wrap justify-content-center">
                     <li>
                         <a href="{{profile.twitter}}" target="_blank"><i class="lab la-twitter"></i></a>
@@ -206,9 +206,10 @@
                             <h4 class="subtitle scroll-animation" data-animation="fade_from_bottom">
                                 <i class="las la-home"></i> Introduce
                             </h4>
-                            <h1 class="scroll-animation" data-animation="fade_from_bottom">Say Hi from <span>Sohan</span>, Django and Flask Developer</h1>
+                            <h1 class="scroll-animation" data-animation="fade_from_bottom">Say Hi from <span>Sohan</span>, Software Engineer - Backend</h1>
                         </div>
-                        <p class="scroll-animation" data-animation="fade_from_bottom">I code efficiently simple things and i love what i do. Just simple like that!</p>
+                        <p class="scroll-animation" data-animation="fade_from_bottom">I create backend systems that are not only efficient but also scalable and reliable. 
+                            I enjoy solving complex problems, writing clean code, and approaching every project with curiosity, precision, and a commitment to excellence.</p>
                         <a href="#portfolio" class="go-to-project-btn scroll-to scroll-animation" data-animation="rotate_up">
                             <img src="{{ url_for('static', filename='images/round-text.png') }}" alt="Rounded Text">
                             <i class="las la-arrow-down"></i>
@@ -221,7 +222,7 @@
                             </div>
                             <div class="right scroll-animation" data-animation="fade_from_right">
                                 <h1>{{profile.project_count}}+</h1>
-                                <p>projects completed<br>worldwide</p>
+                                <p>projects completed<br> worldwide</p>
                             </div>
                         </div>
                     </div>
@@ -235,14 +236,12 @@
                             <h4 class="subtitle scroll-animation" data-animation="fade_from_bottom">
                                 <i class="lar la-user"></i> About
                             </h4>
-                            <h1 class="scroll-animation" data-animation="fade_from_bottom">Every great design begin with<br>
-                                an even <span>better story</span></h1>
+                            <h1 class="scroll-animation" data-animation="fade_from_bottom">Building Great Backend Starts <br>
+                                With A <span>Better Story</span></h1>
                         </div>
-                        <p class="scroll-animation" data-animation="fade_from_bottom">Since beginning my journey as a freelance designer nearly {{profile.experience}} years ago, 
-                            I've done remote work for agencies, consulted for startups, and collaborated with 
-                            talented people to create digital products for both business and consumer use. 
-                            I'm quietly confident, naturally curious, and perpetually working on improving my 
-                            chopsone design problem at a time.</p>
+                        <p class="scroll-animation" data-animation="fade_from_bottom">Since beginning my journey as a backend developer nearly {{profile.experience}} ago, 
+                            I’ve built applications for startups, contributed to remote projects, and collaborated with talented teams to deliver robust digital solutions. 
+                            I’m quietly confident, naturally curious, and constantly improving my skills—one backend challenge at a time.</p>
                     </div>
                 </div>
             </section>
@@ -317,7 +316,7 @@
                             <div class="col-md-3 scroll-animation" data-animation="fade_from_bottom">
                                 <div class="skill">
                                     <div class="skill-inner">
-                                        <img src="{{ item.image_url }}" alt="Laravel/PHP">
+                                        <img src="{{ item.image_url }}" alt="{{item.skill_name}}" style="max-width: 64px; max-height: 64px;">
                                         <h1 class="percent">{{item.proficiency}}%</h1>
                                     </div>
                                     <p class="name">{{item.skill_name}}</p>
@@ -397,8 +396,7 @@
                                         <div class="pricing-table-header">
                                             <div class="top d-flex justify-content-between align-items-start">
                                                 <h4>{{price.plan_name}}</h4>
-                                                <p class="text-right">Got you design ready?<br>
-                                                    or {{price.description}}</p>
+                                                <p class="text-right">{{price.description}}<br></p>
                                             </div>
                                             <h1>Upto <span>/ ${{price.price}}</span></h1>
                                         </div>
