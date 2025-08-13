@@ -136,6 +136,8 @@
         flex: 0 0 auto;
         width: 50%;
     }
+
+
     .clients-logos .row .col-md-3 {
         flex: 0 0 auto;
         width: 33.3333%;
@@ -265,7 +267,19 @@
         margin-bottom: 40px;
     }
 }
+
+@media (max-width: 767px) { 
+    .skills .skill .skill-inner {
+        margin: 0px 92px 0px 92px;
+    }
+}
+
 @media (max-width: 584px) {
+    .skills .skill .skill-inner {
+        padding: 25px 0px 25px 0px;
+        margin: 0px 8px 0px 8px;
+    }
+
     .subtitle {
         margin-bottom: 40px;
     }
@@ -328,6 +342,23 @@
         padding-left: 40px;
     }
 }
+
+
+@media (max-width: 375px) {
+    .skills .skill .skill-inner {
+        padding: 22px 0px 22px 0px;
+        margin: 0px 0px 0px 0px;
+    }
+}
+
+
+@media (max-width: 320px) {
+    .skills .skill .skill-inner {
+        padding: 14px 0px 14px 0px;
+        margin: 0px -5px 0px -5px;
+    }
+}
+
 @media (max-width: 425px) {
     .comments-area .comments .comments-list .comment-item .comment-body .comment-content h4 {
         flex-direction: column;
