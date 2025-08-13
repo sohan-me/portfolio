@@ -114,6 +114,57 @@
         width: 50%;
     }
 }
+
+/* Tablet breakpoint - maintain list view like large screens */
+@media (max-width: 1024px) and (min-width: 768px) {
+    .services-items {
+        display: block; /* Keep default block/list view */
+    }
+    .services-items .service-item {
+        margin-bottom: 10px;
+        padding: 35px 40px 35px 40px;
+        width: 100%;
+    }
+    .services-items .service-item h2 {
+        font-size: 22px;
+        margin-bottom: 8px;
+    }
+    .services-items .service-item p {
+        margin-bottom: 25px;
+        font-size: 14px;
+    }
+    .services-items .service-item i {
+        font-size: 26px;
+        top: 38px;
+        right: 42px;
+    }
+}
+
+/* Additional tablet breakpoint for 768px - maintain list view */
+@media (max-width: 768px) and (min-width: 584px) {
+    .services-items {
+        display: block; /* Keep default block/list view */
+    }
+    .services-items .service-item {
+        margin-bottom: 10px;
+        padding: 30px 35px 30px 35px;
+        width: 100%;
+    }
+    .services-items .service-item h2 {
+        font-size: 20px;
+        margin-bottom: 8px;
+    }
+    .services-items .service-item p {
+        margin-bottom: 20px;
+        font-size: 14px;
+    }
+    .services-items .service-item i {
+        font-size: 24px;
+        top: 32px;
+        right: 37px;
+    }
+}
+
 @media (max-width: 787px) {
     .hero-section .hero-content h1 {
         font-size: 58px;
@@ -247,10 +298,10 @@
         margin-bottom: 20px;
     }
     .services-items {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        display: block; /* Keep default block/list view */
     }
     .services-items .service-item {
+        margin-bottom: 10px;
         width: 100%;
     }
 
